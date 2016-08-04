@@ -622,17 +622,34 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
         _doneButton.contentMode = UIViewContentModeScaleAspectFit;
     }
 
-    UIImage *leftButtonImage = (_leftArrowImage == nil) ?
-    [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeft.png"]          : _leftArrowImage;
+    
+    UIImage *leftImage = [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeft.png"];
+    if (!leftImage) {
+        NSString *resourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/IDMPhotoBrowser.framework/IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeft.png"];
+        leftImage = [UIImage imageWithContentsOfFile:resourcePath];
+    }
+    UIImage *leftButtonImage = (_leftArrowImage == nil) ? leftImage : _leftArrowImage;
 
-    UIImage *rightButtonImage = (_rightArrowImage == nil) ?
-    [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRight.png"]         : _rightArrowImage;
+    UIImage *rightImage = [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRight.png"];
+    if (!rightImage) {
+        NSString *resourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/IDMPhotoBrowser.framework/IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRight.png"];
+        rightImage = [UIImage imageWithContentsOfFile:resourcePath];
+    }
+    UIImage *rightButtonImage = (_rightArrowImage == nil) ? rightImage : _rightArrowImage;
 
-    UIImage *leftButtonSelectedImage = (_leftArrowSelectedImage == nil) ?
-    [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeftSelected.png"]  : _leftArrowSelectedImage;
+    UIImage *leftSelectedImage = [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeftSelected.png"];
+    if (!leftSelectedImage) {
+        NSString *resourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/IDMPhotoBrowser.framework/IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowLeftSelected.png"];
+        leftSelectedImage = [UIImage imageWithContentsOfFile:resourcePath];
+    }
+    UIImage *leftButtonSelectedImage = (_leftArrowSelectedImage == nil) ? leftSelectedImage : _leftArrowSelectedImage;
 
-    UIImage *rightButtonSelectedImage = (_rightArrowSelectedImage == nil) ?
-    [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRightSelected.png"] : _rightArrowSelectedImage;
+    UIImage *rightSelectedImage = [UIImage imageNamed:@"IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRightSelected.png"];
+    if (!rightSelectedImage) {
+        NSString *resourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/IDMPhotoBrowser.framework/IDMPhotoBrowser.bundle/images/IDMPhotoBrowser_arrowRightSelected.png"];
+        rightSelectedImage = [UIImage imageWithContentsOfFile:resourcePath];
+    }
+    UIImage *rightButtonSelectedImage = (_rightArrowSelectedImage == nil) ? rightSelectedImage : _rightArrowSelectedImage;
 
     // Arrows
     _previousButton = [[UIBarButtonItem alloc] initWithCustomView:[self customToolbarButtonImage:leftButtonImage
